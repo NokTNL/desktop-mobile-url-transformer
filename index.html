@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <label>
+        Desktop to mobile:
+        <input id="desktop-to-mobile-input" />
+      </label>
+      <a
+        id="desktop-to-mobile-result"
+        target="_blank"
+        rel="noopener noreferrer"
+      ></a>
+      <div></div>
+      <label>
+        Mobile to desktop:
+        <input id="mobile-to-desktop-input" />
+      </label>
+      <a
+        id="mobile-to-desktop-result"
+        target="_blank"
+        rel="noopener noreferrer"
+      ></a>
+    </form>
+    <script>
+      const desktopToMobileInput = document.getElementById(
+        "desktop-to-mobile-input"
+      );
+      const mobileToDesktopInput = document.getElementById(
+        "mobile-to-desktop-input"
+      );
+      const desktopToMobileResult = document.getElementById(
+        "desktop-to-mobile-result"
+      );
+      const mobileToDesktopResult = document.getElementById(
+        "mobile-to-desktop-result"
+      );
+
+      desktopToMobileInput.addEventListener("input", (e) => {
+        const inputText = e.target.value;
+        const resultText = inputText.replace(
+          /(https:\/\/[\w.]+)(?=\/)/,
+          "$1.mcas.ms"
+        );
+
+        desktopToMobileResult.innerText = resultText;
+        desktopToMobileResult.href = resultText;
+      });
+
+      mobileToDesktopInput.addEventListener("input", (e) => {
+        const inputText = e.target.value;
+        const resultText = inputText.replace(".mcas.ms", "");
+
+        mobileToDesktopResult.innerText = resultText;
+        mobileToDesktopResult.href = resultText;
+      });
+    </script>
+  </body>
+</html>
